@@ -1,0 +1,16 @@
+.git
+.gradle
+.kotlin
+target
+sql
+
+README.md
+CHANGELOG.md
+
+.env.sample
+.gitignore
+
+compose.dev.yml
+compose.prod.yml
+
+kls_database.db

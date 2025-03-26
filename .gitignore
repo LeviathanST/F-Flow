@@ -1,0 +1,12 @@
+target/
+.settings/
+.gradle/
+.kotlin/
+
+kls_database.db
+dependency-reduced-pom.xml
+.classpath
+.project
+.vscode
+.env
+.factorypath
