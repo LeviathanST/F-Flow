@@ -22,7 +22,6 @@ cd F-Flow
 - Build and package into war file
 ```
 mvn package
-
 ```
 
 - Move the war file to tomcat webapps folder 
