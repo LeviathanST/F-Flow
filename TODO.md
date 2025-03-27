@@ -1,0 +1,30 @@
+- [ ] Authentication:
+  - [ ] Login
+  - [ ] Sign up (This will be deprecated soon)
+- [ ] Authorization: 
+  - [ ] Because multi-context must to check, we still use role-based and each role have permissions, members can use feature if their role have needed permissions to access.
+  - [ ] Permission is predefined in the application.
+  -  [ ] F-Code have 3 context to grant permission for member
+    - [ ] Application (Apply to whole app)
+    - [ ] Guild (HR, Media, Technical, Plan)
+    - [ ] Crew (Backend, Frontend, Information Assurance (Security), AI, Game)
+- [ ] Application:
+  - [ ] Profile: members can access to read, update themselves, President can access any profile.
+  - [ ] Guild: display all member's guild, create new one by admin.
+  - [ ] Crew: display all member's crew, create new one by admin.
+  - [ ] Event: display all active events in the club, CRUD by who has permissions.
+  - [ ] Member: display all active member, update, edit role, banned by who has permissions.
+  - [ ] Role: CRUD by who has permission.
+- [ ] Crew:
+  - [ ] Information: display crew infomration.
+  - [ ] Level: each crew can have multi level (Backend 1, Backend 2, ...) and it can be created as a new crew but it won't be displayed in crew section.
+  - [ ] Member: display all active member, update, edit role, banned by who has permissions.
+  - [ ] Event: display all active events in the crew, CRUD by who has permissions.
+  - [ ] Role: CRUD by who has permission.
+- [ ] Guild:
+   - [ ] Information: display crew infomration.
+   - [ ] Level: each crew can have multi level (Backend 1, Backend 2, ...) and it can be created as a new crew but it won't be displayed in crew section.
+   - [ ] Member: display all active member, update, edit role, banned by who has permissions.
+  - [ ] Event: display all active events in the crew, CRUD by who has permissions.
+  - [ ] Role: CRUD by who has permission.
+
