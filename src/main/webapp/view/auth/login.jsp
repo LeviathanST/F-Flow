@@ -94,7 +94,7 @@
             username: document.getElementById("username").value,
             password: document.getElementById("password").value
         };
-	fetch("<%=request.getContextPath()%>/auth/login", {
+	fetch("<%=request.getContextPath()%>/app/auth/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
