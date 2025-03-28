@@ -13,8 +13,11 @@ class Router {
     fun get(path: String, handler: RouteHandler) {
         routes.add(Routing("GET", path, handler))
     }
+    fun post(path: String, handler: RouteHandler) {
+        routes.add(Routing("POST", path, handler))
+    }
     fun handle(req: HttpServletRequest, res: HttpServletResponse) {
-        val path = req.pathInfo.substring(1)
+        val path = req.pathInfo?.substring(1) ?: ""
         val method = req.method
         val route = routes.find { it.method == method && it.path == path }
         route?.handler?.invoke(req, res)
@@ -24,7 +27,7 @@ class Router {
                 )
     }
     fun addProvider(provider: RouteProvider) {
-        provider.register(this)
+        provider.build(this)
     }
     fun register(block: Router.() -> Unit) {
         this.apply(block)

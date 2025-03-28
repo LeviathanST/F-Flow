@@ -1,5 +1,6 @@
 package common
 
 interface RouteProvider {
-    fun register(router: Router)
+    // Route register
+    fun build(router: Router)
 }
