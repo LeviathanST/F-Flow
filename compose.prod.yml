@@ -7,9 +7,12 @@ services:
     environment:
       ROUND_HASHING: ${ROUND_HASHING}
       SECRET_KEY: ${SECRET_KEY}
+
       DB_URL: ${DB_URL}
       DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
+
       TZ: Asia/Ho_Chi_Minh
     ports:
       - ${APP_PORT}:8080
