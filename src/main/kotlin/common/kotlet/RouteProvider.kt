@@ -1,4 +1,4 @@
-package common
+package common.kotlet
 
 interface RouteProvider {
     // Route register
