@@ -1,4 +1,15 @@
 DELIMITER //
+
+CREATE TRIGGER after_insert_new_user
+AFTER INSERT ON user_account
+FOR EACH ROW
+BEGIN
+    INSERT INTO user_role (account_id, role_id)
+    SELECT NEW.id, r.id
+    FROM role r
+    WHERE r.is_default = true AND r.name LIKE 'APP_%';
+END //
+
 CREATE TRIGGER after_insert_new_crew
 AFTER INSERT ON crew
 FOR EACH ROW
@@ -25,4 +36,5 @@ BEGIN
 		END IF;
 	END IF;
 END //
+
 DELIMITER ;

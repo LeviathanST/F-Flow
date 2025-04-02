@@ -9,12 +9,16 @@ services:
     environment:
       ROUND_HASHING: ${ROUND_HASHING}
       SECRET_KEY: ${SECRET_KEY}
+
       DB_URL: ${DB_URL}
       DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
+
       TZ: Asia/Ho_Chi_Minh
     ports:
       - ${APP_PORT}:8080
+      
     networks:
       - member-management
     restart: unless-stopped
@@ -39,7 +43,7 @@ services:
     container_name: member_management_phpmyadmin
     environment:
       PMA_HOST: db
-      PMA_USER: root
+      PMA_USER: ${DB_USERNAME}
       PMA_PASSWORD: ${DB_PASSWORD}
     ports:
       - ${PMA_PORT}:80
