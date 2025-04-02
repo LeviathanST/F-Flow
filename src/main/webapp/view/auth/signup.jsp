@@ -93,7 +93,7 @@
                 username: document.getElementById("username").value,
                 password: document.getElementById("password").value
             };
-            fetch("<%=request.getContextPath()%>/auth/signup", {
+            fetch("<%=request.getContextPath()%>/app/auth/signup", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(user)
