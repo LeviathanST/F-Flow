@@ -26,17 +26,15 @@ object EnvLoader {
             properties.forEach {
                 it
                     .takeIf {
-                        it is KMutableProperty<*> && it.annotations.any { ann -> ann is EnvVar }
+                        it.annotations.any { ann -> ann is EnvVar }
                     }?.let {
                         it as KMutableProperty<*>
                     }?.let { mutableProp ->
-                        val envVar = mutableProp.annotations.filterIsInstance(EnvVar::class.java).firstOrNull()
-                        val envValue = System.getenv(envVar?.name?.uppercase())
-                        if (envValue == null || envValue.trim().isEmpty()) {
-                            return@load Err(
-                                IllegalArgumentException(
-                                    "Environment variable ${envVar?.name} for ${mutableProp.name} is undefined or empty",
-                                ),
+                        val envVar = mutableProp.annotations.filterIsInstance(EnvVar::class.java).first()
+                        val envValue = System.getenv(envVar.name.uppercase())
+                        if (envValue == null || envValue.trim().isBlank()) {
+                            throw IllegalArgumentException(
+                                "Environment variable ${envVar.name} for ${mutableProp.name} is undefined or empty",
                             )
                         }
                         val convertedValue =
