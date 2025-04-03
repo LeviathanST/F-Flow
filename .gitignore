@@ -1,6 +1,5 @@
 target/
 .settings/
-.gradle/
 .kotlin/
 
 kls_database.db
