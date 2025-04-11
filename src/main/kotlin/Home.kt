@@ -1,3 +1,4 @@
+import application.ApplicationController
 import auth.AuthController
 import common.kotlet.Kotlet
 import common.kotlet.Router
@@ -10,6 +11,7 @@ class Home : Kotlet() {
 
     override fun build(router: Router) {
         router.addProvider(AuthController())
+        router.addProvider(ApplicationController())
         router.register {
             get("home") { req, res -> req.getRequestDispatcher("/view/main.jsp").forward(req, res) }
         }
