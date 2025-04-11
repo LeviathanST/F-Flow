@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@ page import="dto.app.GetEventDTO" %>
+<%@ page import="application.dtos.GetEventDTO" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -330,6 +330,7 @@
                 <p><%= event.getDescription() %></p>
                 <p><b><%= event.getStartedAt() %></b></p>
                 <p><b><%= event.getEndedAt() %></b></p>
+                <p><b><%= event.getCreatedAt() %></b></p>
             </div>
     <div class="event-actions">
                 <% if (ade) { %>
@@ -404,8 +405,8 @@ eventForm.addEventListener("submit", async function(event) {
     const eventId = document.getElementById("event-id").value.trim() || null;
     const title = document.getElementById("title").value;
     const content = document.getElementById("content").value;
-    const startedAt = formatDateTime(document.getElementById("startedAt").value);
-    const endedAt = formatDateTime(document.getElementById("endedAt").value);
+    const startedAt = document.getElementById("startedAt").value;
+    const endedAt = document.getElementById("endedAt").value;
 
     const eventData = { eventId, title, description: content, startedAt, endedAt };
 
@@ -426,7 +427,7 @@ eventForm.addEventListener("submit", async function(event) {
 });
 
 function formatDateTime(dateTimeString) {
-    return dateTimeString ? dateTimeString.replace("T", " ") + ":00" : null;
+    return dateTimeString ? dateTimeString.replace(" ", "T") + ":00" : null;
 }
 
 function editEvent(id, title, description, startedAt, endedAt) {
