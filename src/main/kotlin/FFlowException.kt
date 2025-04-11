@@ -13,7 +13,18 @@ data class DataNotFound(
     override val message: String = "$dataName with username $username not found!",
 ) : FFLowException(message)
 
+/*
+ * Occur when user send the invalid credentials to server
+ * */
 data class InvalidCredentials(
+    override val message: String,
+) : FFLowException(message)
+
+data class Unauthorized(
+    override val message: String = "User don't have permission",
+) : FFLowException(message)
+
+data class InvalidData(
     override val message: String,
 ) : FFLowException(message)
 
