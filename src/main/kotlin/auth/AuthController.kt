@@ -1,6 +1,6 @@
 package auth
 
-import Response
+import common.Response
 import common.HttpExtractor
 import common.kotlet.RouteProvider
 import common.kotlet.Router
@@ -38,10 +38,9 @@ class AuthController : RouteProvider {
 
     fun login(req: HttpServletRequest, res: HttpServletResponse) {
         val data =
-                extractor.extractBody<LoginBody>(req).getOrElse {
-                    Response(400, "Login failed!", null).sendErr(res, it)
-                    return@login
-                }
+                extractor
+                .extractBody<LoginBody>(req)
+                .getOrSendErr(res) ?: return
 
         val token = authService.login(data).getOrElse {
             when (it) {

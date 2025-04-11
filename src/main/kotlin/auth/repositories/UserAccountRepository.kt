@@ -13,6 +13,7 @@ import java.sql.SQLException
 class UserAccountRepository {
     private val dataSource = Database().connect()
 
+    // TODO: Use multi query instead of stored procedure
     fun create(
         username: String,
         password: String,
