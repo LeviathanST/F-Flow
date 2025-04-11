@@ -18,14 +18,20 @@ class TokenService {
         account_id: String,
         role_id: Int,
     ): String {
-        val algorithms = Algorithm.HMAC256(secret)
+        val algorithm = Algorithm.HMAC256(secret)
         val token =
             JWT
                 .create()
                 .withIssuer("auth0")
                 .withClaim("account_id", account_id)
                 .withClaim("user_role_id", role_id)
-                .sign(algorithms)
+                .sign(algorithm)
         return token
+    }
+
+    fun verify(at: String): String {
+        val algorithm = Algorithm.HMAC256(secret)
+        val verifier = JWT.require(algorithm).withIssuer("auth0").build()
+        return verifier.verify(at).getClaim("account_id").asString()
     }
 }
